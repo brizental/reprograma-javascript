@@ -48,3 +48,42 @@ var appointments = {
     "person": "Mariana Silva"
   }
 }
+
+for (var time in appointments) {
+  var appointmentDiv = document.createElement("div")
+  appointmentDiv.classList.add("appointment")
+
+  // !CUIDADO!
+  // appointmentDiv.innerHTML = `<div class="time">
+  //                               <p>${time}</p>
+  //                             </div>
+  //                             <div class="circle"></div>
+  //                             <div class="event">
+  //                               <h2>${appointments[time]['title']}</h2>
+  //                               <p>${appointments[time]['person']}</p>
+  //                             </div>`
+  // !CUIDADO!
+
+  timeDiv.classList.add("time")
+  var timeP = document.createElement("p")
+  timeP.textContent = time
+  timeDiv.appendChild(timeP)
+  appointmentDiv.appendChild(timeDiv)
+
+  var circleDiv = document.createElement("div")
+  circleDiv.classList.add("circle")
+  appointmentDiv.appendChild(circleDiv)
+
+  var eventDiv = document.createElement("div")
+  eventDiv.classList.add("event")
+  var eventH2 = document.createElement("h2")
+  eventH2.textContent = appointments[time]['title']
+  var eventP = document.createElement("p")
+  eventP.textContent = appointments[time]['person']
+  eventDiv.appendChild(eventH2)
+  eventDiv.appendChild(eventP)
+  appointmentDiv.appendChild(eventDiv)  
+
+  var scheduleDiv = document.getElementById("schedule")
+  scheduleDiv.appendChild(appointmentDiv)
+}
