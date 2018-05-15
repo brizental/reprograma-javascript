@@ -60,7 +60,7 @@ body {
     &.done {
       color: #aeaeae;
       text-decoration: line-through;
-      cursor: pointer;
+      cursor: initial;
 
       &:hover {
         background-color: white;
