@@ -19,11 +19,11 @@ var appointments = {
     "title": "Gap",
     "person": "Michael Goulart"
   },
-  "18h00": {
+  "11h30": {
     "title": "Power Jump",
     "person": "Alvaro Bigaton"
   },
-  "18h30": {
+  "11h35": {
     "title": "Zumba",
     "person": "Mariana Silva"
   },
@@ -49,6 +49,10 @@ var appointments = {
   }
 }
 
+var now = (new Date()).getTime()
+var smallestTimeDifference = Infinity
+var redCircle = undefined
+
 for (var time in appointments) {
   var appointmentDiv = document.createElement("div")
   appointmentDiv.classList.add("appointment")
@@ -64,6 +68,7 @@ for (var time in appointments) {
   //                             </div>`
   // !CUIDADO!
 
+  var timeDiv = document.createElement("div")
   timeDiv.classList.add("time")
   var timeP = document.createElement("p")
   timeP.textContent = time
@@ -86,4 +91,16 @@ for (var time in appointments) {
 
   var scheduleDiv = document.getElementById("schedule")
   scheduleDiv.appendChild(appointmentDiv)
+
+  var timeAppointment = new Date()
+  timeAppointment.setHours(parseInt(time.split("h")[0]))
+  timeAppointment.setMinutes(parseInt(time.split("h")[1]))
+  timeAppointment = timeAppointment.getTime()
+  var timeDifference = Math.abs(timeAppointment - now)  
+  if (timeDifference < smallestTimeDifference) {
+    smallestTimeDifference = timeDifference
+    redCircle = circleDiv
+  }
 }
+
+redCircle.style.backgroundColor = "red"
