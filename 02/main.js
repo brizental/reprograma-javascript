@@ -64,6 +64,8 @@ for (var time in appointments) {
   //                             </div>`
   // !CUIDADO!
 
+
+  var timeDiv = document.createElement("div")
   timeDiv.classList.add("time")
   var timeP = document.createElement("p")
   timeP.textContent = time
