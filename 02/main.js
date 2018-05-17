@@ -53,37 +53,30 @@ var now = (new Date()).getTime()
 var smallestTimeDifference = Infinity
 var redCircle = undefined
 
+function createElementAndAddClass(element, classe) {
+  var el = document.createElement(element)
+  if (typeof classe !== "undefined") {
+    el.classList.add(classe)
+  }
+  return el
+}
+
 for (var time in appointments) {
-  var appointmentDiv = document.createElement("div")
-  appointmentDiv.classList.add("appointment")
+  var appointmentDiv = createElementAndAddClass("div", "appointment")
 
-  // !CUIDADO!
-  // appointmentDiv.innerHTML = `<div class="time">
-  //                               <p>${time}</p>
-  //                             </div>
-  //                             <div class="circle"></div>
-  //                             <div class="event">
-  //                               <h2>${appointments[time]['title']}</h2>
-  //                               <p>${appointments[time]['person']}</p>
-  //                             </div>`
-  // !CUIDADO!
-
-  var timeDiv = document.createElement("div")
-  timeDiv.classList.add("time")
-  var timeP = document.createElement("p")
+  var timeDiv = createElementAndAddClass("div", "time")
+  var timeP = createElementAndAddClass("p")
   timeP.textContent = time
   timeDiv.appendChild(timeP)
   appointmentDiv.appendChild(timeDiv)
 
-  var circleDiv = document.createElement("div")
-  circleDiv.classList.add("circle")
+  var circleDiv = createElementAndAddClass("div", "circle")
   appointmentDiv.appendChild(circleDiv)
 
-  var eventDiv = document.createElement("div")
-  eventDiv.classList.add("event")
-  var eventH2 = document.createElement("h2")
+  var eventDiv = createElementAndAddClass("div", "event")
+  var eventH2 = createElementAndAddClass("h2")
   eventH2.textContent = appointments[time]['title']
-  var eventP = document.createElement("p")
+  var eventP = createElementAndAddClass("p")
   eventP.textContent = appointments[time]['person']
   eventDiv.appendChild(eventH2)
   eventDiv.appendChild(eventP)
