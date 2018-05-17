@@ -49,10 +49,6 @@ var appointments = {
   }
 }
 
-var now = (new Date()).getTime();
-var smallestTimeDifference = Infinity;
-var redCircle = undefined;
-
 for (var time in appointments) {
   var schedule = document.getElementById('schedule');
   var container = document.createElement('div');
@@ -83,16 +79,4 @@ for (var time in appointments) {
   pNome.textContent = appointments[time].person;
   event.appendChild(pNome);
 
-  var timeAppointment = new Date();
-  timeAppointment.setHours(parseInt(time.split('h')[0]));
-  timeAppointment.setMinutes(parseInt(time.split('h')[1]));
-  timeAppointment = timeAppointment.getTime();
-  var timeDifference = Math.abs(timeAppointment - now);
-
-  if (timeDifference < smallestTimeDifference) {
-    smallestTimeDifference = timeDifference;
-    redCircle = circle;
-  }
 }
-
-redCircle.style.backgroundColor = 'red';
