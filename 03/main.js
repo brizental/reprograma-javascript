@@ -4,23 +4,34 @@ function getRandomColor() {
   return colors[index]
 }
 
-function createProgressBars() {
-  
+function getRandomColorMilena() {
+  var letras = '0123456789ABCDEF'
+  var cor = "#"
+  for (var j = 0; j < 6; j++) {
+    cor = cor + letras[Math.floor(Math.random() * letras.length)]
+  }
+  return cor
 }
 
-var progress = document.querySelectorAll(".progress")
+function getRandomColorBruna() {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
 
-for (var div of progress) {
-  var percentage = div.dataset.percentage
+function createProgressBar(percentage, containerDiv) {
+  const percentageH1 = document.createElement("h1")
+  percentageH1.textContent = percentage + "%"
+  containerDiv.appendChild(percentageH1)
 
-  var percentageText = document.createElement("h1")
-  percentageText.textContent =  percentage + "%"
-  div.appendChild(percentageText)
-
-  var progressDiv = document.createElement("div")
-  progressDiv.style.backgroundColor = getRandomColor()
+  const progressBar = document.createElement("div")
+  progressBar.style.backgroundColor = getRandomColor()
   setTimeout(() => {
-    progressDiv.style.width = percentage + "%"
+    progressBar.style.width = percentage + "%"
   }, 100)
-  div.appendChild(progressDiv)
+  containerDiv.appendChild(progressBar)
+}
+
+const progress = document.querySelectorAll(".progress")
+for (const div of progress) {
+  const percentage = div.dataset.percentage
+  createProgressBar(percentage, div)
 }
