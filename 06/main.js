@@ -24,6 +24,7 @@ input.addEventListener("keyup", function(event) {
                 for (const video of jsonResponse.items) {
                     results.innerHTML = results.innerHTML + `
                         <a target="_blank" href=https://www.youtube.com/watch?v=${video.id.videoId}>
+                            <img src="${video.snippet.thumbnails.default.url}" alt="Prévia do vídeo">
                             <h1>${video.snippet.title}</h1>
                             <p>${video.snippet.description}</p>
                         </a>
