@@ -14,18 +14,23 @@ let questions = [
   }
 ]
 
+/* Elementos necessarios para o quiz funcionar */
 const questionsAll = document.getElementById("questions")
 const closeButton = document.getElementById("close")
 const startButton = document.querySelector("#container button")
 const overlay = document.getElementById("overlay")
 const timer = document.getElementById("timer")
+const container = document.getElementById("container")
+
+/* Abrir e fechar o quiz */
 let interval = undefined
-startButton.addEventListener("click", () => {
-  console.log("clicouuu")
+startButton.addEventListener("click", openQuiz)
+closeButton.addEventListener("click", closeQuiz)
+
+function openQuiz() {
   overlay.style.top = "0vh"
   interval = startTimer(timer)
-})
-closeButton.addEventListener("click", closeQuiz)
+}
 
 function closeQuiz() {
   setTimeout(function () {
@@ -35,12 +40,25 @@ function closeQuiz() {
   clearInterval(interval)
 }
 
+/* Timer */
 function startTimer(element) {
   element.innerHTML = "00:00"
   const now = Date.now()
   return setInterval(() => {
     const updatedNow = Date.now()
     const diffDate = new Date(updatedNow - now)
+    // let minutes
+    // if (diffDate.getMinutes() < 10) {
+    //   minutes = "0" + diffDate.getMinutes()
+    // } else {
+    //   minutes = diffDate.getMinutes()
+    // }
+    // let seconds
+    // if (diffDate.getSeconds() < 10) {
+    //   seconds = "0" + diffDate.getSeconds()
+    // } else {
+    //   seconds = diffDate.getSeconds()
+    // }
     const minutes = diffDate.getMinutes() < 10 
       ? "0" + diffDate.getMinutes() : diffDate.getMinutes()
     const seconds = diffDate.getSeconds() < 10 
@@ -49,6 +67,7 @@ function startTimer(element) {
   }, 1000)
 }
 
+/* Crio o HTML das perguntas */
 for (let i = 0; i < questions.length; i++) {
   const questionDiv = document.createElement("div")
   questionDiv.classList.add("question")
@@ -76,19 +95,38 @@ for (let i = 0; i < questions.length; i++) {
 
   trueButton.addEventListener("click", function() {
     questions[i].userAnswer = true
-    if (i < questions.length - 1) {
-      questionsAll.style.left = `calc(${questionsAll.offsetLeft}px - 100vw)`
-    } else {
-      closeQuiz()
-    }
+    nextQuizStep(i)
   })
 
   falseButton.addEventListener("click", function() {
     questions[i].userAnswer = false
-    if (i < questions.length - 1) {
-      questionsAll.style.left = `calc(${questionsAll.offsetLeft}px - 100vw)`
-    } else {
-      closeQuiz()
-    }
+    nextQuizStep(i)
   })
+}
+
+function nextQuizStep(index) {
+  if (index < questions.length - 1) {
+    questionsAll.style.left = `calc(${questionsAll.offsetLeft}px - 100vw)`
+  } else {
+    let answeredQuestions = ''
+    for (const question of questions) {
+      answeredQuestions += `
+        <li>
+          ${question.text}<br />
+          <span class="${question.userAnswer === question.answer ? "right" : "wrong"}">
+            ${question.userAnswer === true ? "VERDADEIRO" : "FALSO"}
+          </span>
+        </li>
+      `
+    }
+
+    container.innerHTML = `<ul>${answeredQuestions}</ul>`
+
+    const tryAgainButton = document.createElement("button")
+    tryAgainButton.textContent = "Tente novamente"
+    tryAgainButton.addEventListener("click", openQuiz)
+    container.appendChild(tryAgainButton)
+
+    closeQuiz()
+  }
 }
