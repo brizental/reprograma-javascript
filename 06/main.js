@@ -12,7 +12,7 @@ const results = document.getElementById("results")
 
 input.addEventListener("keyup", function(event) {
     // event.preventDefault()
-    results.innerHTML = '<p>Carregando...</p>'
+    results.innerHTML = '<img src="./loading.gif" alt="Gif de carregamento">'
     getData(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=vidasdfasdfasdfaeo&q=${input.value}&key=AIzaSyA2oJySYmGJxeYqkLAMqPBQNOK6ZOH30Q8`).then(
         function(response) {
             // promiseHasResolved = true
@@ -24,6 +24,7 @@ input.addEventListener("keyup", function(event) {
                 for (const video of jsonResponse.items) {
                     results.innerHTML = results.innerHTML + `
                         <a target="_blank" href=https://www.youtube.com/watch?v=${video.id.videoId}>
+                            <img src="${video.snippet.thumbnails.default.url}" alt="Prévia do vídeo">
                             <h1>${video.snippet.title}</h1>
                             <p>${video.snippet.description}</p>
                         </a>
