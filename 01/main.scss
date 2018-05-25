@@ -56,8 +56,11 @@ body {
     border-bottom: 1px solid #eaeaea;
     transition: background-color 300ms;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    &.done {
+    p.done {
       color: #aeaeae;
       text-decoration: line-through;
       cursor: initial;
@@ -65,6 +68,10 @@ body {
       &:hover {
         background-color: white;
       }
+    }
+
+    .delete {
+      margin-left: 2rem;
     }
 
     &:hover {
