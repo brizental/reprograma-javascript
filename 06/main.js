@@ -10,6 +10,10 @@ const results = document.getElementById("results")
 //     }
 // })
 
+form.addEventListener("submit", function(event){
+    event.preventDefault()
+})
+
 input.addEventListener("keyup", function(event) {
     // event.preventDefault()
     results.innerHTML = '<img src="./loading.gif" alt="Gif de carregamento">'
