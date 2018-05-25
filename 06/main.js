@@ -15,8 +15,8 @@ form.addEventListener("submit", function(event){
 })
 
 input.addEventListener("keyup", function(event) {
-    event.preventDefault()
-    results.innerHTML = '<p>Carregando...</p>'
+    // event.preventDefault()
+    results.innerHTML = '<img src="./loading.gif" alt="Gif de carregamento">'
     getData(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=vidasdfasdfasdfaeo&q=${input.value}&key=AIzaSyA2oJySYmGJxeYqkLAMqPBQNOK6ZOH30Q8`).then(
         function(response) {
             // promiseHasResolved = true
