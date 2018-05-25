@@ -10,8 +10,12 @@ const results = document.getElementById("results")
 //     }
 // })
 
+form.addEventListener("submit", function(event){
+    event.preventDefault()
+})
+
 input.addEventListener("keyup", function(event) {
-    // event.preventDefault()
+    event.preventDefault()
     results.innerHTML = '<p>Carregando...</p>'
     getData(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=vidasdfasdfasdfaeo&q=${input.value}&key=AIzaSyA2oJySYmGJxeYqkLAMqPBQNOK6ZOH30Q8`).then(
         function(response) {
