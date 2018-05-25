@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+}
+
+body {
+  background: linear-gradient(to bottom, rgba(75,1,94,1) 0%,rgba(42,1,63,1) 100%);
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  text-transform: uppercase;
+  background-color: white;
+  color: #260138;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+
+  button {
+    box-shadow: 0px 0px 17px -5px rgba(0,0,0,0.75);
+    transition: box-shadow 200ms ease-in-out;
+    border-radius: 18px;
+    &:hover {
+      box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.75);
+    }
+  }
+
+  ul {
+    color: white;
+    list-style-type: none;
+    padding: 20px;
+    width: 100vw;
+
+    li {
+      margin-bottom: 20px;
+
+      .right {
+        color: green;
+      }
+
+      .wrong {
+        color: red;
+      }
+    }
+  }
+}
+
+#overlay {
+  position: absolute;
+  top: 100vh;
+  height: 100vh;
+  width: 100%;
+  transition: top 400ms ease-in-out;
+  background: linear-gradient(to bottom, rgba(42,1,63,1) 0%,rgba(75,1,94,1) 100%);
+  background-color: black;
+
+  #header {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 20px 30px;
+
+    #close {
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+
+  #questions {
+    transition: left 200ms ease-in-out;
+    position: absolute;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+    .question {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      height: 70%;
+      width: 100%;
+      padding: 0 30px;
+
+      p {
+        color: white;
+        text-align: center;
+      }
+
+      .answers {
+        width: 60vw;
+        margin: 30px auto;
+
+        button {
+          width: 100%;
+          display: block;
+
+          &:first-of-type {
+            border-bottom: 1px solid #260138;
+          }
+        }
+      }
+    }
+  }
+}

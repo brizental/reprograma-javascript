@@ -1,16 +1,17 @@
+// Capturar elemento do input
 var form = document.getElementById("input")
 form.addEventListener("submit", function (event) {
   // Nao permitir comportamento padrao do navegador
   event.preventDefault()
   // Capturar o elemento de input
   var todoInput = document.querySelector("#input input")
-  // Capturar text do input
+  // Capturar texto do input
   var todoText = todoInput.value
   // Checar se tem texto no input
   if (todoText !== "") {
     // Criar novo li 
     var newTodoItem = document.createElement("li")
-    // Criar text que vai dentro de novo li
+    // Criar texto que vai dentro de novo li
     var newTodoItemText = document.createTextNode(todoText)
     // Colocar texto dentro do li
     newTodoItem.appendChild(newTodoItemText)
