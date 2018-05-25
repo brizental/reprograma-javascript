@@ -12,7 +12,7 @@ const results = document.getElementById("results")
 
 input.addEventListener("keyup", function(event) {
     // event.preventDefault()
-    results.innerHTML = '<p>Carregando...</p>'
+    results.innerHTML = ' <img src="img/gif.gif">'
     getData(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=vidasdfasdfasdfaeo&q=${input.value}&key=AIzaSyA2oJySYmGJxeYqkLAMqPBQNOK6ZOH30Q8`).then(
         function(response) {
             // promiseHasResolved = true
