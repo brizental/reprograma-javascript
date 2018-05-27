@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #111;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+}
+
+#slider {
+  box-shadow: inset 0px 0px 12px 2px rgba(0,0,0,0.75);
+  background-color: #aeaeae;
+  border-radius: 15px;
+  height: 20px;
+  width: 20vw;
+  position: relative;
+  margin: 0 auto;
+}
+
+#knob {
+  border-radius: 100%;
+  box-shadow: 0px 0px 5px -1px rgba(255,255,255,1);
+  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 1%,rgba(211,211,211,1) 100%);
+  position: absolute;
+  left: -18px;
+  top: -7px;
+  width: 36px;
+  height: 36px;
+}
+
