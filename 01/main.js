@@ -5,10 +5,13 @@ form.addEventListener("submit", function (event) {
   event.preventDefault()
   // Capturar o elemento de input
   var todoInput = document.querySelector("#input input")
-  // Capturar texto do input
-  var todoText = todoInput.value
+  // Capturar texto do input e aplicar o método trim() para tirar os espaços em branco
+  var todoText = todoInput.value.trim()
   // Checar se tem texto no input
-  if (todoText !== "") {
+  if (todoText.length === 0) {
+      todoInput.value = ""
+
+  } else {
     // Criar novo li 
     var newTodoItem = document.createElement("li")
     // Criar texto que vai dentro de novo li
